@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>WCR Operations — Demo</title>
+<meta name="description" content="Click-through workspace demo: what automation and AI take over at Workers Comp Recovery, who does what, and how much time it saves.">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="ai-chat.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="mbar">
+  <button type="button" class="icon-btn" id="menuBtn" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false"><span class="burger" aria-hidden="true"></span></button>
+  <div class="mbar-brand"><svg class="hex" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2.5 28 9.3v13.4L16 29.5 4 22.7V9.3z" fill="#5b5bd6"/><path d="M16 9 22 12.5v7L16 23l-6-3.5v-7z" fill="#fff" opacity=".9"/></svg><span>WCR Operations · Demo</span></div>
+  <span class="pill p-amber demo-pill">Demo data</span>
+</div>
+
+<aside class="sidebar" id="sidebar" aria-label="Workspace">
+  <div class="ws">
+    <svg class="hex" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2.5 28 9.3v13.4L16 29.5 4 22.7V9.3z" fill="#5b5bd6"/><path d="M16 9 22 12.5v7L16 23l-6-3.5v-7z" fill="#fff" opacity=".9"/></svg>
+    <div class="ws-txt"><div class="ws-name">WCR Operations</div><div class="ws-sub">Demo workspace</div></div>
+    <button type="button" class="icon-btn sb-close" id="sbClose" aria-label="Close menu">✕</button>
+  </div>
+  <div class="sb-search" aria-hidden="true"><span>⌕</span> Search</div>
+  <nav aria-label="Solution">
+    <button class="nav about" type="button" data-about="1"><span class="ni ni-info" aria-hidden="true">i</span>About this demo</button>
+    <div class="sol"><span class="sol-ic" aria-hidden="true">W</span><span class="sol-name">Workers Comp Recovery</span></div>
+    <div class="sb-label">Start here</div>
+    <button class="nav" data-view="day" type="button"><span class="ni ni-sun" aria-hidden="true"></span>Your day: before vs after</button>
+    <div class="sb-label">Dashboards</div>
+    <button class="nav" data-view="owner" type="button"><span class="ni ni-dash" aria-hidden="true"></span>Owner Dashboard</button>
+    <button class="nav" data-view="details" type="button"><span class="ni ni-dash" aria-hidden="true"></span>Owner: all numbers</button>
+    <button class="nav" data-view="secretary" type="button"><span class="ni ni-dash" aria-hidden="true"></span>Secretary Workspace</button>
+    <div class="sb-label">Tables</div>
+    <button class="nav" data-view="t-clients" type="button"><span class="ni ni-table" aria-hidden="true"></span>Clients</button>
+    <button class="nav" data-view="t-cases" type="button"><span class="ni ni-table" aria-hidden="true"></span>Cases</button>
+    <button class="nav" data-view="t-documents" type="button"><span class="ni ni-table" aria-hidden="true"></span>Documents</button>
+    <button class="nav" data-view="t-brokers" type="button"><span class="ni ni-table" aria-hidden="true"></span>Broker Requests</button>
+    <button class="nav" data-view="t-disputes" type="button"><span class="ni ni-table" aria-hidden="true"></span>Disputes</button>
+    <button class="nav" data-view="t-tasks" type="button"><span class="ni ni-table" aria-hidden="true"></span>Tasks</button>
+    <div class="sb-label">Automation plan</div>
+    <button class="nav" data-view="autos" type="button"><span class="ni ni-bolt" aria-hidden="true"></span>Automation Center</button>
+    <button class="nav" data-view="who" type="button"><span class="ni ni-flow" aria-hidden="true"></span>Who does what</button>
+    <button class="nav" data-view="time" type="button"><span class="ni ni-clock" aria-hidden="true"></span>Time saved</button>
+    <button class="nav" data-view="flow" type="button"><span class="ni ni-play" aria-hidden="true"></span>Watch a case</button>
+    <div class="sb-label">Optional (Phase 2)</div>
+    <button class="nav" data-view="audit" type="button"><span class="ni ni-ai" aria-hidden="true"></span>AI Audit Assist</button>
+  </nav>
+  <div class="sb-foot">
+    <p class="sb-note">Shown inside your existing SmartSuite account. Same tables and logins, nothing to migrate.</p>
+    <div class="legend-mini"><span class="pill p-purple">AI</span><span class="pill p-blue">Automation</span><span class="pill p-amber">Human approves</span><span class="pill p-gray">Stays manual</span></div>
+    <button class="btn small full" id="resetBtn" type="button">↺ Reset demo</button>
+  </div>
+</aside>
+<div class="sb-backdrop" id="sbBackdrop" hidden></div>
+
+<div class="app">
+<header class="hdr">
+  <div class="crumbs">WCR Operations <span>›</span> Workers Comp Recovery <span>›</span> <b id="crumbCur">Dashboards</b></div>
+  <div class="hdr-row">
+    <h1 class="hdr-title" id="hdrTitle"><span class="ht-ic ni-dash" id="hdrIcon" aria-hidden="true"></span><span id="hdrText">Owner Dashboard</span></h1>
+    <span class="pill p-amber demo-d">Demo data</span>
+  </div>
+  <div class="hdr-bar">
+    <div class="vtabs" role="tablist" aria-label="View type">
+      <button type="button" class="vtab" data-vt="grid" role="tab"><span class="vi vi-grid" aria-hidden="true"></span>Grid</button>
+      <button type="button" class="vtab" data-vt="kanban" role="tab"><span class="vi vi-kanban" aria-hidden="true"></span>Kanban</button>
+      <button type="button" class="vtab active" data-vt="dashboard" role="tab"><span class="vi vi-dash" aria-hidden="true"></span>Dashboard</button>
+      <button type="button" class="vtab" data-vt="card" role="tab"><span class="vi vi-card" aria-hidden="true"></span>Card</button>
+    </div>
+    <div class="tools">
+      <div class="tool-wrap"><button type="button" class="tbtn" id="filterBtn" aria-haspopup="true" aria-expanded="false"><span aria-hidden="true">⚲</span> Filter<span class="tb-badge" id="filterBadge" hidden></span></button><div class="pop" id="filterPop" hidden></div></div>
+      <div class="tool-wrap"><button type="button" class="tbtn" id="sortBtn" aria-haspopup="true" aria-expanded="false"><span aria-hidden="true">⇅</span> Sort<span class="tb-badge" id="sortBadge" hidden></span></button><div class="pop" id="sortPop" hidden></div></div>
+      <div class="tool-wrap"><button type="button" class="tbtn" id="groupBtn" aria-haspopup="true" aria-expanded="false"><span aria-hidden="true">▤</span> Group<span class="tb-badge" id="groupBadge" hidden></span></button><div class="pop" id="groupPop" hidden></div></div>
+      <button type="button" class="tbtn primary" id="newBtn">+ Record</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+
+<!-- YOUR DAY -->
+<section class="view" id="view-day" aria-label="Your day: before vs after">
+  <div class="ss-line">This is your existing SmartSuite, configured for you. Not a new system. <button type="button" class="linkbtn" data-about="1">About this demo</button></div>
+  <p class="lead">What changes in a normal working day. Illustrative, demo data. Hours are estimates to check against your real cases.</p>
+  <div class="kpis" id="dayKpis"></div>
+  <div class="wgrid" id="dayCols"></div>
+  <div class="widget" style="margin-top:14px">
+    <div class="w-head"><h2>What nobody does by hand any more</h2></div>
+    <ul class="nolonger" id="noLonger"></ul>
+    <div class="btn-row"><button type="button" class="btn primary" data-goto="owner|">Open the Owner Dashboard ›</button><button type="button" class="btn" data-goto="secretary|">Open the Secretary Workspace ›</button><button type="button" class="btn" data-goto="autos|">See every automation ›</button></div>
+  </div>
+</section>
+
+<!-- AUTOMATION CENTER -->
+<section class="view" id="view-autos" aria-label="Automation Center">
+  <p class="lead">Every automation in the workspace, and who has to approve it. Tap to change who approves a step; locked ones say why.</p>
+  <div class="legend" id="autoLegend"></div>
+  <div class="autocols" id="autoCols"></div>
+</section>
+
+<!-- AI AUDIT (optional) -->
+<section class="view" id="view-audit" aria-label="AI Audit Review">
+  <div class="opt-note"><b>Optional (Phase 2), separate from the admin automation, owner-reviewed.</b> Everything else in this workspace works without it. When switched on, AI reads audits, worksheets and loss runs and flags <b>possible</b> errors. Each one is a suspicion with page references and the math, never a confirmed overcharge. The owner decides what, if anything, becomes a dispute.</div>
+  <div class="widget">
+    <div class="w-head"><h2>AI audit briefs waiting for review</h2><span class="count" id="auditCount"></span></div>
+    <p class="w-note">Tap a case to see the evidence. Approving only drafts a letter; nothing is sent until you approve that too.</p>
+    <ul class="list" id="auditList"></ul>
+  </div>
+</section>
+
+<!-- OWNER DASHBOARD -->
+<section class="view" id="view-owner" aria-label="Owner Dashboard">
+  <div class="ss-line">Your existing SmartSuite, set up for you. Not a new system. <button type="button" class="linkbtn" data-about="1">About this demo</button></div>
+  <div class="kpis big4" id="kpis"></div>
+  <div class="home2">
+    <div class="widget big" id="decWidget">
+      <div class="w-head"><h2>Needs your decision</h2><span class="count" id="apprCount"></span></div>
+      <p class="w-note">Nothing is sent until you check it and press <b>Approve &amp; send</b>.</p>
+      <ul class="list" id="decList"></ul>
+    </div>
+    <div class="widget big">
+      <div class="w-head"><h2>Your day: before vs after</h2></div>
+      <ul class="ba" id="baList"></ul>
+      <div class="btn-row"><button type="button" class="btn small" data-goto="day|">See the full day ›</button></div>
+    </div>
+  </div>
+  <div class="more-row"><button type="button" class="btn" data-goto="details|">All numbers and lists ›</button><button type="button" class="btn" data-goto="secretary|">Secretary Workspace ›</button></div>
+</section>
+
+<!-- OWNER DETAILS -->
+<section class="view" id="view-details" aria-label="Owner details">
+  <p class="lead">Everything behind the Owner Dashboard. Tap any number to see the records behind it. All demo data.</p>
+  <div class="sec-title" style="margin-top:0">Recovery money</div>
+  <div class="kpis three" id="pipe"></div>
+  <div class="week-banner" id="weekBanner"></div>
+  <div class="wgrid">
+    <div class="widget"><div class="w-head"><h2>Missing documents</h2><span class="count red" id="mdCount"></span></div><div id="missCard"></div></div>
+    <div class="widget"><div class="w-head"><h2>Overdue cases</h2><span class="count red" id="odCount"></span></div><ul class="list" id="overdueList"></ul></div>
+    <div class="widget"><div class="w-head"><h2>Recent insurer responses</h2><span class="count" id="respCount"></span></div><ul class="list" id="respList"></ul></div>
+    <div class="widget"><div class="w-head"><h2>Follow-ups to insurers</h2><span class="count" id="fuCount"></span></div><p class="w-note">Reminders are set in Outlook automatically; each follow-up email is drafted for you to approve.</p><ul class="list" id="followList"></ul></div>
+    <div class="widget"><div class="w-head"><h2>Cases by stage</h2><span class="w-sub" id="stageSub"></span></div><div id="stageChart"></div></div>
+    <div class="widget"><div class="w-head"><h2>Who does the work, with automation</h2></div><div id="donut"></div></div>
+  </div>
+  <div class="phase2-link">Optional (Phase 2), not part of the first project: <button type="button" class="linkbtn" data-goto="audit|">AI Audit Assist ›</button> <span class="item-sub" id="auditCount2"></span></div>
+</section>
+
+<!-- SECRETARY WORKSPACE -->
+<section class="view" id="view-secretary" aria-label="Secretary Workspace">
+  <p class="lead" id="secLead"></p>
+  <div class="kpis" id="secKpis"></div>
+  <div class="widget">
+    <div class="w-head"><h2>Today's progress</h2><span class="w-sub" id="secBarLabel"></span></div>
+    <div class="progress"><div class="progress-bar" id="secBar"></div></div>
+  </div>
+  <div class="wgrid">
+    <div class="widget alert">
+      <div class="w-head"><h2>Exceptions — needs you</h2><span class="count red" id="excCount"></span></div>
+      <p class="w-note">Only the things the system can't or shouldn't do alone. Each one says why.</p>
+      <ul class="list" id="excList"></ul>
+    </div>
+    <div class="widget">
+      <div class="w-head"><h2>Done automatically today</h2><span class="count green" id="autoCount"></span></div>
+      <ul class="list feed" id="autoList"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- TABLE (shared by Clients, Cases, Documents, Broker Requests, Disputes, Tasks) -->
+<section class="view" id="view-table" aria-label="Table">
+  <div class="tbl-meta" id="tblMeta"></div>
+  <div id="tblBody"></div>
+</section>
+
+<!-- WHO DOES WHAT -->
+<section class="view" id="view-who" aria-label="Who does what">
+  <p class="lead">The 9 steps of every case. Flip the switch to see each step today, and with automation.</p>
+  <div class="switch-row">
+    <div class="seg" role="group" aria-label="Today or with automation">
+      <button type="button" class="seg-btn active" data-mode="today">Today</button>
+      <button type="button" class="seg-btn" data-mode="auto">With automation</button>
+    </div>
+  </div>
+  <div class="legend" id="legend"></div>
+  <div class="who-total" id="whoTotal"></div>
+  <ol class="steps" id="steps"></ol>
+  <p class="fine">Minutes are per case and illustrative, built from the plan's labelled assumptions (8 h secretary and 4.75 h owner per case today). A 2-week time study replaces them with real numbers.</p>
+</section>
+
+<!-- TIME SAVED -->
+<section class="view" id="view-time" aria-label="Time saved calculator">
+  <h2 class="sec-h">Time saved calculator</h2>
+  <p class="lead">Move the slider to your number of active cases.</p>
+  <div class="note-box top">Based on planning assumptions, not guaranteed. To be validated against real case data (2-week time study) before any commitment.</div>
+  <div class="widget calc">
+    <label class="calc-label" for="caseSlider">Active cases: <strong id="caseVal">100</strong></label>
+    <input type="range" id="caseSlider" min="0" max="3" step="1" value="1" aria-describedby="caseTicks">
+    <div class="ticks" id="caseTicks"><button type="button" data-i="0">25</button><button type="button" data-i="1">100</button><button type="button" data-i="2">250</button><button type="button" data-i="3">500</button></div>
+    <div class="seg phase-seg" role="group" aria-label="Which phase">
+      <button type="button" class="seg-btn" data-ph="A">After Day 1-30</button>
+      <button type="button" class="seg-btn active" data-ph="B">After Day 31-60</button>
+    </div>
+    <div class="results" id="results"></div>
+    <div class="bars" id="bars"></div>
+  </div>
+  <div class="note-box"><strong>Estimates based on assumptions; confirmed by a 2-week time study.</strong> These are planning estimates, not guaranteed savings: the time per case is checked against your real case data before anything is promised. Time saved is not the same as cash saved: it turns into money when it avoids a hire or lets the same team handle more cases.</div>
+  <details class="widget assumptions">
+    <summary>The assumptions behind these numbers</summary>
+    <ul>
+      <li>Secretary time per case today: <b>8 hours</b> (onboarding 0.5, NYCIRB 0.25, coverage research 1, broker requests and follow-ups 2, portal 0.5, filing 0.75, review and notes 3).</li>
+      <li>Owner time per case today: <b>4.75 hours</b> (review 2, dispute preparation 1.5, follow-ups 1, invoicing 0.25).</li>
+      <li>A case stays active about <b>6 months</b>, so new cases per month = active cases ÷ 6.</li>
+      <li>Share of time removed after Day 1-30: secretary <b>25%</b>, owner <b>15%</b>. After Day 31-60: secretary <b>50%</b>, owner <b>35%</b>.</li>
+      <li>One full-time person ≈ <b>167 hours</b> a month; one owner work day = 8 hours.</li>
+    </ul>
+  </details>
+</section>
+
+<!-- WATCH A CASE -->
+<section class="view" id="view-flow" aria-label="Watch a case flow">
+  <h2 class="sec-h">Watch a case flow</h2>
+  <p class="lead">One demo case, <b>Northshore Landscaping Inc.</b>, from signed agreement to invoice. Press play and watch each step light up.</p>
+  <div class="flow-controls">
+    <button type="button" class="btn primary" id="playBtn">▶ Play</button>
+    <button type="button" class="btn" id="prevBtn" aria-label="Previous step">‹ Back</button>
+    <button type="button" class="btn" id="nextBtn" aria-label="Next step">Next ›</button>
+  </div>
+  <div class="flow-meter" id="flowMeter"></div>
+  <ol class="flow" id="flow"></ol>
+</section>
+
+</main>
+
+<footer class="foot">
+  <p><b>WCR Operations — Demo.</b> All client names, people, amounts and documents are invented demo data. SmartSuite, AmTrust, NYCIRB, WCB, Gmail, Outlook and OneDrive are named only as the systems involved. AI findings are suspicions with evidence, never confirmed overcharges; disputes, settlements and invoices always need the owner's approval.</p>
+</footer>
+</div>
+
+<div class="rp-backdrop" id="backdrop" hidden></div>
+<aside class="rpanel" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" aria-hidden="true">
+  <div class="rp-top"><span class="rp-table" id="rpTable">Cases</span><span class="rp-nav" id="rpNav"></span><button type="button" class="icon-btn" id="sheetClose" aria-label="Close record">✕</button></div>
+  <div class="rp-body" id="sheetBody"></div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+<script src="ai-chat.js"></script>
+</body>
+</html>
